@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+const router = express.Router();
+
 dotenv.config();
 
 const mongoString = process.env.DATABASE_URL;
@@ -27,10 +29,9 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.send("About");
 });
-app.get("/contact", (req, res) => {
-  res.send("<h1>Contact</h1>");
-});
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
+
+export default router;
