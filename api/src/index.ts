@@ -1,8 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import post from "./routes/post.route";
 
-const router = express.Router();
 
 dotenv.config();
 
@@ -20,18 +20,12 @@ database.once("connected", () => {
 });
 
 const app = express();
+app.use(express.json());
+app.use('/api', post);
 
 const port = 3001;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-app.get("/about", (req, res) => {
-  res.send("About");
-});
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
 
-export default router;
